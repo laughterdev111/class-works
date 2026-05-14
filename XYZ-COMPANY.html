@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-	 <link rel="icon" type="image/png" href="prototype.png">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Divs Check</title>
 	<link rel="script" href="main.js">
+
 <style type="text/css">
+
 	body{
 		display: flex;
-    justify-content: center; 
-    align-items: center;
+    	justify-content: center;
+    	align-items: center;
 	}
+
 	#one{
-height: 400px;
-width: 600px;
-
-border: 2px solid black;
-position: relative;
-
+		height: 400px;
+		width: 600px;
+		border: 2px solid black;
+		position: relative;
 	}
+
 	#blue{
 		height: 200px;
 		width: 600px;
@@ -31,104 +32,205 @@ position: relative;
 		color: white;
 		margin-top: -17px;
 	}
+
 	#white{
 		height: 200px;
 		width: 600px;
 		position: relative;
 		background-color: ghostwhite;
 	}
+
 	#btn{
-		height: 150px;
 		width: 350px;
 		position: absolute;
 		background-color: whitesmoke;
 		border: 1px solid blue;
+
 		top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding-left: 5px;
-    padding-top: 10px;
-    display: grid;
-  grid-template-columns: repeat(3, 1fr); 
-  gap: 15px; 
-  border-radius: 9px;
-  overflow: hidden;       
-    word-wrap: break-word;
-    height: auto;         
-    min-height: 150px;
+    	left: 50%;
+    	transform: translate(-50%, -50%);
+
+    	padding: 10px;
+    	border-radius: 9px;
+
+    	display: grid;
+  		grid-template-columns: repeat(3, 1fr);
+  		gap: 15px;
+
+  		height: auto;
+  		min-height: 150px;
+
+  		box-sizing: border-box;
+  		box-shadow: 0px 10px 30px rgba(0, 0, 0, 2.2);
 	}
 
 	P{
-
 		padding-top: 12px;
 	}
+
 	.input{
 		width: 50px;
-
-
 	}
+
+	/* ONLY CHANGED THIS */
 	#result{
+		grid-column: span 2;
+
+		display: flex;
+		flex-direction: column;
+
+		overflow-wrap: break-word;
+		word-break: break-word;
+
+		padding-top: 9px;
 		padding-left: 70px;
-		font-size: 10px;
 	}
+
+	#resultText{
+		font-size: 18px;
+		margin: 0;
+	}
+
+	#answer{
+		font-size: 16px;
+		margin-top: 5px;
+		color: green;
+	}
+
 	#convert:hover{
 		transform: scale(1.1);
 		cursor: pointer;
 	}
+
 </style>
 </head>
+
 <body>
-	<script src="main.js"></script>
+
+<script src="main.js"></script>
+
 <div id="one">
+
 	<div id="blue">
 		<p>XYZ-COMPANY</p>
-		<p>CURRANCY EXCHANGE PLATFORM</p>
+		<p>CURRENCY EXCHANGE PLATFORM</p>
 	</div>
+
 	<div id="white"></div>
+
 	<div id="btn">
+
 		<div>
-		Amount        
-		<br><input type="number" id="amount" class="input">
+			Amount
+			<br>
+			<input type="number" id="amount" class="input">
+		</div>
+
+		<div>
+			From
+			<br>
+
+			<select id="from">
+				<option value="USD">USD-$</option>
+				<option value="RWF">RWF</option>
+    <option value="EUR">EUR - Euro</option>
+    <option value="GBP">GBP - Pound</option>
+    <option value="KES">KES - Shilling</option>
+    <option value="UGX">UGX - Shilling</option>
+    <option value="TZS">TZS - Shilling</option>
+    <option value="BIF">BIF - Franc</option>
+    <option value="ZAR">ZAR - Rand</option>
+    <option value="NGN">NGN - Naira</option>
+    <option value="CAD">CAD - C.Dollar</option>
+    <option value="AUD">AUD - A.Dollar</option>
+    <option value="JPY">JPY - J.Yen</option>
+    <option value="CNY">CNY - C.Yuan</option>
+    <option value="INR">INR - I.Rupee</option>
+    <option value="AED">AED - UAE.Dirham</option>
+    <option value="CHF">CHF - Swiss.Franc</option>
+
+			</select>
+		</div>
+
+		<div class="input">
+			TO
+			<br>
+
+			<select id="to">
+				<option value="USD">USD-$</option>
+				<option value="RWF">RWF</option>
+
+    <option value="EUR">EUR - Euro</option>
+    <option value="GBP">GBP - Pound</option>
+    <option value="KES">KES - Shilling</option>
+    <option value="UGX">UGX - Shilling</option>
+    <option value="TZS">TZS - Shilling</option>
+    <option value="BIF">BIF - Franc</option>
+    <option value="ZAR">ZAR - Rand</option>
+    <option value="NGN">NGN - Naira</option>
+    <option value="CAD">CAD - C.Dollar</option>
+    <option value="AUD">AUD - A.Dollar</option>
+    <option value="JPY">JPY - J.Yen</option>
+    <option value="CNY">CNY - C.Yuan</option>
+    <option value="INR">INR - I.Rupee</option>
+    <option value="AED">AED - UAE.Dirham</option>
+    <option value="CHF">CHF - Swiss.Franc</option>
+			</select>
+		</div>
+
+		<div>
+			<button id="convert" onclick="convert()">Convert</button>
+		</div>
+
+		<div id="result">
+			<h2 id="resultText">Result:</h2>
+
+			<div id="answer"></div>
+		</div>
+
 	</div>
-	<div> From
-		<br>
-	<select id="from">
-		<option value="USD">USD-$</option>
-		<option value="RWF">RWF</option>
-	</select></div>
-	<div class="input">
-		TO<br>
-		<select id="to">
-			<option value="USD">USD-$</option>
-		<option value="RWF"> RWF</option>
-		</select>
-	</div>
-	<div>
-		<button id="convert" onclick="convert()">Convert</button>
-	</div>
-	<div id="result"><h2 id="resultText">Result:</h2></div>
-	</div>
+
 </div>
+
 </body>
+
 <script type="text/javascript">
+
 function convert() {
+    // 1. Get the values from your HTML inputs
     let money = document.getElementById("amount").value;
     let fromUnit = document.getElementById("from").value;
     let toUnit = document.getElementById("to").value;
     let resultDisplay = document.getElementById("resultText");
 
-    let rate = 1300;
-    let finalAnswer = 0;
-
-    if (fromUnit == "USD" && toUnit == "RWF") {
-        finalAnswer = money * rate;
-    } else if (fromUnit == "RWF" && toUnit == "USD") {
-        finalAnswer = money / rate;
-    } else {
-        finalAnswer = money;
+    // 2. Updated 2026 Rates (Value of 1 USD in each currency)
+    const rates = {
+        "USD": 1,
+        "RWF": 1315.50, 
+        "EUR": 0.91,    
+        "GBP": 0.78,    
+        "KES": 132.20,  
+        "UGX": 3725.00, 
+        "TZS": 2580.00, 
+        "BIF": 2850.00, 
+        "ZAR": 18.45,   
+        "NGN": 1450.00, 
+        "CAD": 1.36,    
+        "AUD": 1.49,    
+        "JPY": 155.30,  
+        "CNY": 7.23,    
+        "INR": 83.40,   
+        "AED": 3.67,    
+        "CHF": 0.89     
+    };
+    if (money <= 0 || money === "") {
+        resultDisplay.innerText = "Result: Invalid Amount";
+        return;
     }
+    let finalAnswer = (money / rates[fromUnit]) * rates[toUnit];
 
-    resultDisplay.innerText = "Result: " + finalAnswer;
+    resultDisplay.innerText = "Result: " + finalAnswer.toFixed(8) + " " + toUnit;
 }
 </script>
+
 </html>

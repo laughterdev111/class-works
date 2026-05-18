@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>XYZ - Welcome</title>
+    <style>
+        body { margin: 0; font-family: Arial; background-color: #00141e; }
+        #navbar { height: 80px; background: rgba(0,0,0,0.8); display: flex; align-items: center; padding: 0 20px; }
+        .link { color: white; text-decoration: none; margin-left: 20px; cursor: pointer; }
+        #main { 
+            display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 400px; height: 300px; background: white; border: 2px solid blueviolet; 
+            border-radius: 9px; text-align: center; z-index: 1000;
+        }
+        input { padding: 10px; margin: 10px; width: 70%; }
+        button { padding: 10px 20px; background: blueviolet; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <section id="navbar">
+        <div style="height:50px; width:50px; background:white; border-radius:50%;"></div>
+        <a href="index.html" class="link">Home</a>
+        <a class="link" onclick="openLogin()">Login</a>
+    </section>
+
+    <div id="main">
+        <h2 style="margin-top:50px;">Login</h2>
+        <input type="text" id="uName" placeholder="Enter Name">
+        <br>
+        <button onclick="doLogin()">Submit & Enter System</button>
+    </div>
+
+    <script>
+        function openLogin() { document.getElementById("main").style.display = "block"; }
+        
+        function doLogin() {
+            let name = document.getElementById("uName").value;
+            if (name.trim() !== "") {
+                localStorage.setItem("activeUser", name); // Save info
+                window.location.href = "system.html";    // Go to new page
+            } else {
+                alert("Enter a name");
+            }
+        }
+    </script>
+</body>
+</html>
